@@ -1,10 +1,9 @@
-const io = require("socket.io")(3000, {
-  path:'/mysocket',
-  cors: {
-    origin: ["http://localhost:5173", "http://localhost:4173"],
-  },
+import { Server } from "socket.io";
+
+const io = new Server({
+  path: "/mysocket/"
 });
 
-io.on('connection', socket => {
-    console.log(socket.id);
-})
+io.on("connection", (socket) => {
+  console.log(socket.id);
+});
