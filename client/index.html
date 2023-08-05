@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nobr</title>
-  </head>
-  <body>
-    Hello world
-    <div id="app"></div>
-    <script type="module" src="./main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Client</title>
+</head>
+<body>
+  <input type="text" id="messageInput" placeholder="Enter your message">
+  <button onclick="sendMessage()">Send</button>
+
+  <ul id="messages"></ul>
+
+  <script>
+    const socket = new WebSocket('ws://localhost:3000');
+
+    socket.onopen = () => {
+      console.log('WebSocket connection opened.');
+    };
+
+    socket.onmessage = (event) => {
+      const messagesList = document.getElementById('messages');
+      const messageItem = document.createElement('li');
+      messageItem.textContent = 'hello';
+      messagesList.appendChild(messageItem);
+    };
+
+    socket.onclose = () => {
+      console.log('WebSocket connection closed.');
+    };
+
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value;
+      socket.send(message);
+      messageInput.value = '';
+    }
+  </script>
+</body>
 </html>
