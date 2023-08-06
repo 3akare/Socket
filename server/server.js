@@ -1,7 +1,22 @@
-const http = require("http");
-const WebSocket = require("ws");
+require("dotenv").config();
 
-const server = http.createServer();
+let server;
+
+if (process.env.MODE === 'development'){
+  const http = require("http");
+  server = http.createServer();
+}
+
+else if(process.env.MODE === 'production'){
+  const https = require("https");
+  server = https.createServer({
+    // Provide your SSL certificate and private key paths here
+    cert: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/fullchain.pem"),
+    key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/privkey.pem"),
+  });
+}
+
+const WebSocket = require("ws");
 const wss = new WebSocket.Server({ server });
 
 // WebSocket connection handling
