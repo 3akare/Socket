@@ -1,6 +1,4 @@
-const socket = new WebSocket("ws://localhost:3000");
-// const socket = new WebSocket("wss://3akare.tech/websocket/");
-
+const socket = new WebSocket("ws://88.80.187.75:3000");
 socket.onopen = () => {
   console.log("WebSocket connection opened.");
 };
