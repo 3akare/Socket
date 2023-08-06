@@ -3,43 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebSocket Client</title>
+    <link rel="stylesheet" href="./src/main.css" />
+    <link rel="shortcut icon" href="./public/IcSharpInsights.svg">
+    <title>nobr: Experiment</title>
   </head>
   <body>
-    <input type="text" id="messageInput" placeholder="Enter your message" />
-    <button onclick="sendMessage()">Send</button>
-
-    <ul id="messages"></ul>
-
-    <script>
-      const socket = new WebSocket("ws://88.80.187.75:3000");
-
-      socket.onopen = () => {
-        console.log("WebSocket connection opened.");
-      };
-
-      socket.onmessage = (event) => {
-        const messagesList = document.getElementById("messages");
-        const messageItem = document.createElement("li");
-
-        const reader = new FileReader();
-        reader.onload = () => {
-          messageItem.textContent = reader.result; // reader.result contains the text data
-          messagesList.appendChild(messageItem);
-        };
-        reader.readAsText(event.data); // Read the Blob as text
-      };
-
-      socket.onclose = () => {
-        console.log("WebSocket connection closed.");
-      };
-
-      function sendMessage() {
-        const messageInput = document.getElementById("messageInput");
-        const message = messageInput.value;
-        socket.send(message);
-        messageInput.value = "";
-      }
-    </script>
+    <header>
+      <nav>
+        <p>nobr <span>Experiment</span></p>
+        <a href="https://google.com" target="_blank">
+          <img
+            src="./public/IcSharpDriveFileRenameOutline.svg"
+            title="form"
+            alt="form"
+            width="40px"
+            height="40px"
+          />
+        </a>
+      </nav>
+    </header>
+    <main>
+      <section id="messageArea">
+        <ul id="messages">
+        </ul>
+      </section>
+      <div id="inScope"></div>
+      <section id="chatBox">
+        <textarea
+          name=""
+          id="messageInput"
+          cols="30"
+          rows="10"
+          placeholder="Enter your message"
+          autofocus
+        ></textarea>
+        <img
+          src="./public/IcRoundSend.svg"
+          title="submit"
+          alt="submit"
+          onclick="sendMessage()"
+          width="50px"
+          height="50px"
+        />
+      </section>
+    </main>
+    <script src="./src/main.js"></script>
   </body>
 </html>

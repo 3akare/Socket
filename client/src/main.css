@@ -1,0 +1,120 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: rgb(254, 254, 254);
+}
+html {
+  color-scheme: light dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(32, 33, 36);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  background-color: rgb(0, 0, 0);
+  height: 58px;
+  min-width: 300px;
+}
+
+nav:first-child,
+nav:last-child {
+  padding: 4px 8px;
+}
+nav:first-child > p {
+  font-size: 18px;
+  color: rgb(227, 227, 227);
+}
+nav:first-child > p > span {
+  color: rgb(147, 174, 216);
+  border: 1px solid rgb(147, 174, 216);
+  padding: 2px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 100;
+}
+nav > a > img:hover {
+  background-color: rgb(20, 20, 20);
+}
+main {
+  position: relative;
+  height: fit-content;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgb(37, 35, 38);
+}
+
+#messageArea {
+  padding: 24px;
+  width: 100%;
+  height: fit-content;
+  justify-self: flex-start;
+}
+ul > li {
+  list-style: none;
+  background-color: rgb(27, 27, 27);
+  padding: 16px;
+  border-radius: 4px;
+  margin: 12px 0px;
+}
+
+ul > li:nth-child(even) {
+  background-color: transparent;
+  text-align: right;
+}
+
+#chatBox {
+  position: fixed;
+  display: flex;
+  bottom: 20px;
+  width: 90%;
+  gap: 8px;
+  align-self: center;
+  align-items: center;
+  height: fit-content;
+  justify-content: center;
+}
+#inScope {
+  background-color: red;
+  height: 50px;
+}
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  display: flex;
+  height: 54px;
+  padding: 18px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 40px;
+  border: solid 1px rgb(277, 277, 277);
+  resize: none;
+  background-color: rgb(18, 18, 19);
+  vertical-align: middle;
+}
+textarea:hover,
+textarea:focus {
+  outline: solid 1px rgb(147, 174, 216);
+}
+
+textarea::placeholder {
+  color: rgb(171, 175, 180);
+  vertical-align: middle;
+}
+
+#chatBox > img,
+nav > a > img {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 8px;
+  z-index: 1;
+}
+#chatBox > img:hover {
+  background-color: rgb(42, 47, 56);
+}
