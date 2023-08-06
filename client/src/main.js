@@ -27,9 +27,13 @@ function sendMessage() {
   messageInput.value = "";
 }
 
-document.querySelector('textarea').addEventListener('keydown', (event)=>{
-  if (event.code === 'Enter'){
-    event.preventDefault()
-    sendMessage()
+document.querySelector("textarea").addEventListener("keydown", (event) => {
+  if (event.code === "Enter") {
+    event.preventDefault();
+    sendMessage();
   }
-})
+});
+
+document.querySelector("#buttonImage").addEventListener("click", () => {
+  sendMessage();
+});
