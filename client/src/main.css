@@ -34,7 +34,7 @@ nav:first-child > p > span {
   padding: 2px;
   border-radius: 4px;
   font-size: 12px;
-  font-weight: 100;
+  font-weight: 300;
 }
 nav > a > img:hover {
   background-color: rgb(20, 20, 20);
