@@ -25,6 +25,7 @@ function sendMessage() {
   const message = messageInput.value;
   socket.send(message);
   messageInput.value = "";
+  document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
 }
 
 document.querySelector("textarea").addEventListener("keydown", (event) => {
