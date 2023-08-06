@@ -2,13 +2,12 @@ require("dotenv").config();
 
 let server;
 
-if (process.env.MODE === 'development'){
+if (process.env.MODE === "development") {
   const http = require("http");
   server = http.createServer();
-}
-
-else if(process.env.MODE === 'production'){
+} else if (process.env.MODE === "production") {
   const https = require("https");
+  const fs = require("fs");
   server = https.createServer({
     // Provide your SSL certificate and private key paths here
     cert: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/fullchain.pem"),
