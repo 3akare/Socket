@@ -2,18 +2,8 @@ require("dotenv").config();
 
 let server;
 
-if (process.env.MODE === "development") {
-  const http = require("http");
-  server = http.createServer();
-} else if (process.env.MODE === "production") {
-  const https = require("https");
-  const fs = require("fs");
-  server = https.createServer({
-    // Provide your SSL certificate and private key paths here
-    cert: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/fullchain.pem"),
-    key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/privkey.pem"),
-  });
-}
+const http = require("http");
+server = http.createServer();
 
 const WebSocket = require("ws");
 const wss = new WebSocket.Server({ server });
