@@ -28,12 +28,23 @@ function sendMessage() {
 }
 
 document.querySelector("textarea").addEventListener("keydown", (event) => {
+  if (messageInput.value !== "") {
   if (event.code === "Enter") {
     event.preventDefault();
     sendMessage();
+    }
+  } else {
+    if (event.code === "Enter") {
+      event.preventDefault();
+      messageInput.value = "";
+    }
   }
 });
 
 document.querySelector("#buttonImage").addEventListener("click", () => {
+  if (messageInput.value !== "") {
   sendMessage();
+  } else {
+    messageInput.value = "";
+  }
 });
