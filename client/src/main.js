@@ -6,7 +6,7 @@ ws: socket.onopen = () => {
 socket.onmessage = (event) => {
   const messagesList = document.getElementById("messages");
   const messageItem = document.createElement("li");
-  messageItem.setAttribute('class', 'receiver')
+  messageItem.setAttribute("class", "receiver");
   messageItem.textContent = event.data;
   const time = {
     hour: new Date().getMinutes(new Date().getHours()),
