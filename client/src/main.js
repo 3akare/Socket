@@ -11,6 +11,7 @@ socket.onmessage = (event) => {
   const time = { hour: new Date().getHours(), minute: new Date().getMinutes() }; //set time
   messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
   messagesList.appendChild(messageItem);
+  document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
 };
 
 socket.onclose = () => {
