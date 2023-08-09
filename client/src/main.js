@@ -7,13 +7,11 @@ socket.onmessage = (event) => {
   const messagesList = document.getElementById("messages");
   const messageItem = document.createElement("li");
 
-  const reader = new FileReader();
-  reader.onload = () => {
-    messageItem.textContent = reader.result; // reader.result contains the text data
-    messagesList.appendChild(messageItem);
+  messageItem.textContent = event.data;
+  const time = {hour: new Date().getHours(), minute: new Date().getMinutes()} //set time
+  messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`)
+  messagesList.appendChild(messageItem);
   };
-  reader.readAsText(event.data); // Read the Blob as text
-};
 
 socket.onclose = () => {
   console.log("WebSocket connection closed.");
