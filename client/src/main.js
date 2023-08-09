@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://88.80.187.75:3000");
+const socket = new WebSocket("ws://localhost:3000");
 socket.onopen = () => {
   console.log("WebSocket connection opened.");
 };
@@ -6,12 +6,12 @@ socket.onopen = () => {
 socket.onmessage = (event) => {
   const messagesList = document.getElementById("messages");
   const messageItem = document.createElement("li");
-
+  messageItem.setAttribute('class', 'receiver')
   messageItem.textContent = event.data;
-  const time = {hour: new Date().getHours(), minute: new Date().getMinutes()} //set time
-  messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`)
+  const time = { hour: new Date().getHours(), minute: new Date().getMinutes() }; //set time
+  messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
   messagesList.appendChild(messageItem);
-  };
+};
 
 socket.onclose = () => {
   console.log("WebSocket connection closed.");
@@ -28,8 +28,20 @@ function sendMessage() {
 document.querySelector("textarea").addEventListener("keydown", (event) => {
   if (messageInput.value !== "") {
   if (event.code === "Enter") {
+      const messagesList = document.getElementById("messages");
+      const messageItem = document.createElement("li");
+      messageItem.setAttribute("class", "sender");
+      messageItem.textContent = messageInput.value;
+
     event.preventDefault();
     sendMessage();
+
+      const time = {
+        hour: new Date().getHours(),
+        minute: new Date().getMinutes(),
+      }; //set time
+      messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
+      messagesList.appendChild(messageItem);
     }
   } else {
     if (event.code === "Enter") {
