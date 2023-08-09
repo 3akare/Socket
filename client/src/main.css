@@ -65,6 +65,7 @@ main {
   justify-self: flex-start;
 }
 ul > li {
+  position: relative;
   list-style: none;
   overflow-wrap: break-word;
   background-color: rgb(27, 27, 27);
@@ -72,8 +73,20 @@ ul > li {
   border-radius: 4px;
   margin: 12px 0px;
 }
+.receiver::after, .sender::after{
+  position: absolute;
+  margin: 5px 16px;
+  bottom: 0;
+  left: 0;
+  content: var(--time, '12:08');
+  color: rgba(147, 173, 216, 0.4);
+  font-size: 8px;
+}
+.sender::after{
+  right: 0;
+}
 
-ul > li:nth-child(even) {
+.sender {
   background-color: transparent;
   text-align: right;
 }
