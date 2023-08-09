@@ -9,6 +9,15 @@ html {
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(32, 33, 36);
 }
+body{
+  position: relative;
+}
+
+header{
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+}
 
 nav {
   display: flex;
@@ -41,8 +50,8 @@ nav > a > img:hover {
 }
 main {
   position: relative;
-  height: fit-content;
-  min-height: calc(100dvh - 58px);
+  height: 100%;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -69,10 +78,22 @@ ul > li:nth-child(even) {
   text-align: right;
 }
 
-#chatBox {
+ul > li:first-child{
+  margin-top: 60px;
+}
+
+#chatBoxHolder{
   position: fixed;
   display: flex;
-  bottom: 20px;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  width: 100vw;
+  height: 80px;
+  bottom: 0px;
+}
+
+#chatBox {
+  display: flex;
   width: 90%;
   gap: 8px;
   align-self: center;
@@ -80,10 +101,9 @@ ul > li:nth-child(even) {
   height: fit-content;
   justify-content: center;
 }
-#inScope {
-  height: 100px;
-  margin-bottom: 100px;
-  width: 100px;
+#inScope, #inScopeReenforce {
+  height: 25vh;
+  width: 100%;
 }
 textarea {
   font-family: Arial, Helvetica, sans-serif;
