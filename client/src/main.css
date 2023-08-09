@@ -57,6 +57,7 @@ main {
 }
 ul > li {
   list-style: none;
+  overflow-wrap: break-word;
   background-color: rgb(27, 27, 27);
   padding: 16px;
   border-radius: 4px;
