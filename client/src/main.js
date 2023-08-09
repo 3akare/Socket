@@ -60,7 +60,20 @@ document.querySelector("textarea").addEventListener("keydown", (event) => {
 
 document.querySelector("#buttonImage").addEventListener("click", () => {
   if (messageInput.value !== "") {
+    const messagesList = document.getElementById("messages");
+    const messageItem = document.createElement("li");
+    messageItem.setAttribute("class", "sender");
+    messageItem.textContent = messageInput.value;
+
+    event.preventDefault();
     sendMessage();
+
+    const time = {
+      hour: new Date().getHours(),
+      minute: new Date().getMinutes(),
+    }; //set time
+    messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
+    messagesList.appendChild(messageItem);
   } else {
     messageInput.value = "";
   }
