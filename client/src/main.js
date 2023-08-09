@@ -8,7 +8,10 @@ socket.onmessage = (event) => {
   const messageItem = document.createElement("li");
   messageItem.setAttribute('class', 'receiver')
   messageItem.textContent = event.data;
-  const time = { hour: new Date().getHours(), minute: new Date().getMinutes() }; //set time
+  const time = {
+    hour: new Date().getMinutes(new Date().getHours()),
+    minute: number.toString().padStart(new Date().getMinutes(), "0"),
+  }; //set time
   messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
   messagesList.appendChild(messageItem);
   document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
