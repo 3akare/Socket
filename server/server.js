@@ -21,7 +21,7 @@ wss.on("connection", (ws) => {
     console.log(senderMessage.id);
     // Broadcast the message to all connected clients (including the sender)
     wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
+      if (client.readyState === WebSocket.OPEN && client !== ws) {
         client.send(senderMessage.content);
       }
     });

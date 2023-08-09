@@ -20,21 +20,27 @@ socket.onclose = () => {
 function sendMessage() {
   const messageInput = document.getElementById("messageInput");
   const message = messageInput.value;
-  socket.send(message);
+
+  const senderMessage = {
+    content: message,
+    sender: true,
+  };
+
+  socket.send(JSON.stringify(senderMessage));
   messageInput.value = "";
   document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
 }
 
 document.querySelector("textarea").addEventListener("keydown", (event) => {
   if (messageInput.value !== "") {
-  if (event.code === "Enter") {
+    if (event.code === "Enter") {
       const messagesList = document.getElementById("messages");
       const messageItem = document.createElement("li");
       messageItem.setAttribute("class", "sender");
       messageItem.textContent = messageInput.value;
 
-    event.preventDefault();
-    sendMessage();
+      event.preventDefault();
+      sendMessage();
 
       const time = {
         hour: new Date().getHours(),
@@ -53,7 +59,7 @@ document.querySelector("textarea").addEventListener("keydown", (event) => {
 
 document.querySelector("#buttonImage").addEventListener("click", () => {
   if (messageInput.value !== "") {
-  sendMessage();
+    sendMessage();
   } else {
     messageInput.value = "";
   }
