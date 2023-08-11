@@ -14,8 +14,8 @@ if (process.env.MODE === "development") {
     key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech-0001/privkey.pem"),
     cert: fs.readFileSync(
       "/etc/letsencrypt/live/3akare.tech-0001/fullchain.pem"
-      ),
-    });
+    ),
+  });
   server.use(cors());
   console.log("Production Mode");
 }
@@ -46,6 +46,10 @@ wss.on("connection", (ws) => {
   ws.on("close", () => {
     console.log("Client disconnected.");
   });
+
+  //Adding headers
+  ws.headers["Upgrade"] = "websocket";
+  ws.headers["Connection"] = "Upgrade";
 });
 
 const port = 3000;
