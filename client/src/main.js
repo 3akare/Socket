@@ -10,7 +10,7 @@ socket.onmessage = (event) => {
   messageItem.textContent = event.data;
   const time = {
     hour: new Date().getMinutes(new Date().getHours()),
-    minute: number.toString().padStart(new Date().getMinutes(), "0"),
+    minute: new Date().getMinutes(),
   }; //set time
   messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
   messagesList.appendChild(messageItem);
