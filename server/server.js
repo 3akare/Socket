@@ -6,7 +6,7 @@ if (process.env.MODE === "development") {
   const http = require("http");
   server = http.createServer((req, res) => {
     if (req.url === "/") {
-      res.end("seen!");
+      res.end("seen! from dev");
     }
   });
   console.log("Development Mode");
@@ -20,7 +20,7 @@ if (process.env.MODE === "development") {
     ),
   },(req, res)=>{
     if (req.url === '/'){
-      res.end('seen!');
+      res.end('seen! from prod');
     }
   }
   );
