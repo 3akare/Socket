@@ -12,7 +12,7 @@ if (process.env.MODE === "development") {
   server = https.createServer({
     key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech-0001/privkey.pem"),
     cert: fs.readFileSync(
-      "/etc/letsencrypt/live/3akare.tech-0001/fullchain.pe"
+      "/etc/letsencrypt/live/3akare.tech-0001/fullchain.pem"
     ),
   });
   console.log("Production Mode");
