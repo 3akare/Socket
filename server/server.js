@@ -10,8 +10,10 @@ if (process.env.MODE === "development") {
   const fs = require("fs");
   const https = require("https");
   server = https.createServer({
-    key: fs.readFileSync("path/to/your/private/key.pem"),
-    cert: fs.readFileSync("path/to/your/certificate.pem"),
+    key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech-0001/privkey.pem"),
+    cert: fs.readFileSync(
+      "/etc/letsencrypt/live/3akare.tech-0001/fullchain.pe"
+    ),
   });
   console.log("Production Mode");
 }
