@@ -1,12 +1,7 @@
 require("dotenv").config();
 
-let server;
-
-const http = require("http");
-server = http.createServer();
-
 const WebSocket = require("ws");
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server();
 
 // WebSocket connection handling
 wss.on("connection", (ws) => {
@@ -33,7 +28,6 @@ wss.on("connection", (ws) => {
   });
 });
 
-const port = 3000;
-server.listen(port, () => {
+wss.listen(3000, () => {
   console.log(`WebSocket server started on port ${port}`);
 });
