@@ -4,6 +4,7 @@ let server;
 
 if (process.env.MODE === "development") {
   const http = require("http");
+  const cors = require("cors");
   server = http.createServer();
   console.log("Development Mode");
 } else if (process.env.MODE === "production") {
@@ -13,8 +14,9 @@ if (process.env.MODE === "development") {
     key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech-0001/privkey.pem"),
     cert: fs.readFileSync(
       "/etc/letsencrypt/live/3akare.tech-0001/fullchain.pem"
-    ),
-  });
+      ),
+    });
+  server.use(cors());
   console.log("Production Mode");
 }
 

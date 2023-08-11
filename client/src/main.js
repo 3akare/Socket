@@ -9,8 +9,8 @@ socket.onmessage = (event) => {
   messageItem.setAttribute("class", "receiver");
   messageItem.textContent = event.data;
   const time = {
-    hour: new Date().getMinutes(new Date().getHours()),
-    minute: new Date().getMinutes(),
+    hour: JSON.stringify(new Date().getHours()).padStart(2, "0"),
+    minute: JSON.stringify(new Date().getMinutes()).padStart(2, "0"),
   }; //set time
   messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
   messagesList.appendChild(messageItem);
@@ -81,3 +81,9 @@ document.querySelector("#buttonImage").addEventListener("click", () => {
     messageInput.value = "";
   }
 });
+
+// If you look properly you see that HTTPS is there.
+// On the linode server, the firewall is inactive
+// how do i use cors middleware?
+
+// I checked the browser's console and the only error there is this ``
