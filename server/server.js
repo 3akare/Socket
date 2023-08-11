@@ -1,7 +1,7 @@
 require("dotenv").config();
+const WebSocket = require("ws");
 
 if (process.env.MODE === "development") {
-  const WebSocket = require("ws");
   const wss = new WebSocket.Server();
 
   // WebSocket connection handling
@@ -32,8 +32,7 @@ if (process.env.MODE === "development") {
   wss.listen(3000, () => {
     console.log(`WebSocket server started on port ${port}`);
   });
-}
-else if (process.env.MODE === 'production'){
+} else if (process.env.MODE === "production") {
   const tls = require("tls");
   const wss = new WebSocket.Server();
 
