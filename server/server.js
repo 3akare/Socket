@@ -4,7 +4,11 @@ let server;
 
 if (process.env.MODE === "development") {
   const http = require("http");
-  server = http.createServer();
+  server = http.createServer((req, res) => {
+    if (req.url === "/") {
+      res.end("seen!");
+    }
+  });
   console.log("Development Mode");
 } else if (process.env.MODE === "production") {
   const fs = require("fs");
@@ -14,7 +18,12 @@ if (process.env.MODE === "development") {
     cert: fs.readFileSync(
       "/etc/letsencrypt/live/3akare.tech/fullchain.pem"
     ),
-  });
+  },(req, res)=>{
+    if (req.url === '/'){
+      res.end('seen!');
+    }
+  }
+  );
   console.log("Production Mode");
 }
 
@@ -45,9 +54,6 @@ wss.on("connection", (ws) => {
     console.log("Client disconnected.");
   });
 
-  //Adding headers
-  ws.headers["Upgrade"] = "websocket";
-  ws.headers["Connection"] = "Upgrade";
 });
 
 const port = 3000;
