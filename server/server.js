@@ -4,10 +4,10 @@ let server;
 
 if (process.env.MODE === "development") {
   const http = require("http");
-  const cors = require("cors");
   server = http.createServer();
   console.log("Development Mode");
 } else if (process.env.MODE === "production") {
+  const cors = require("cors");
   const fs = require("fs");
   const https = require("https");
   server = https.createServer({
