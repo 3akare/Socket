@@ -7,7 +7,6 @@ if (process.env.MODE === "development") {
   server = http.createServer();
   console.log("Development Mode");
 } else if (process.env.MODE === "production") {
-  const cors = require("cors");
   const fs = require("fs");
   const https = require("https");
   server = https.createServer({
@@ -16,7 +15,6 @@ if (process.env.MODE === "development") {
       "/etc/letsencrypt/live/3akare.tech-0001/fullchain.pem"
     ),
   });
-  server.use(cors());
   console.log("Production Mode");
 }
 
