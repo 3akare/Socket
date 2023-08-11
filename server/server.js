@@ -5,15 +5,15 @@ let server;
 if (process.env.MODE === "development") {
   const http = require("http");
   server = http.createServer();
-  console.log('Development Mode')
-}
-else if (process.env.MODE === 'production'){
-  const https = require('https');
+  console.log("Development Mode");
+} else if (process.env.MODE === "production") {
+  const fs = require("fs");
+  const https = require("https");
   server = https.createServer({
     key: fs.readFileSync("path/to/your/private/key.pem"),
-    cert: fs.readFileSync("path/to/your/certificate.pem")
-})
-console.log('Production Mode')
+    cert: fs.readFileSync("path/to/your/certificate.pem"),
+  });
+  console.log("Production Mode");
 }
 
 const WebSocket = require("ws");
