@@ -13,16 +13,16 @@ if (process.env.MODE === "development") {
 } else if (process.env.MODE === "production") {
   const fs = require("fs");
   const https = require("https");
-  server = https.createServer({
-    key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/privkey.pem"),
-    cert: fs.readFileSync(
-      "/etc/letsencrypt/live/3akare.tech/fullchain.pem"
-    ),
-  },(req, res)=>{
-    if (req.url === '/'){
-      res.end('seen! from prod');
+  server = https.createServer(
+    {
+      key: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/privkey.pem"),
+      cert: fs.readFileSync("/etc/letsencrypt/live/3akare.tech/fullchain.pem"),
+    },
+    (req, res) => {
+      if (req.url === "/") {
+        res.end("seen! from prod");
+      }
     }
-  }
   );
   console.log("Production Mode");
 }
@@ -53,7 +53,6 @@ wss.on("connection", (ws) => {
   ws.on("close", () => {
     console.log("Client disconnected.");
   });
-
 });
 
 const port = 3000;
