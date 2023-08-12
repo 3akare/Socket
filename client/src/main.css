@@ -89,7 +89,7 @@ ul > li {
 
 .sender {
   background-color: transparent;
-  text-align: right;
+  text-align: left;
 }
 
 ul > li:first-child {
