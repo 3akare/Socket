@@ -1,8 +1,20 @@
-const socket = new WebSocket("wss://3akare.tech:3000"); //88.80.187.75:3000
+const port = 3000;
+const socket = new WebSocket(
+  `${
+    window.location.href.includes("localhost")
+      ? "ws://localhost"
+      : "wss://3akare.tech"
+  }:${port}`
+);
+
 ws: socket.onopen = () => {
   console.log("WebSocket connection opened.");
 };
 
+// todo: Later when app isnt back and white
+// const userColor = `rgb(${Math.round(Math.random() * 100)}, ${Math.round(
+//   Math.random() * 100
+// )}, ${Math.round(Math.random() * 100)})`;
 socket.onmessage = (event) => {
   const messagesList = document.getElementById("messages");
   const messageItem = document.createElement("li");
@@ -12,7 +24,10 @@ socket.onmessage = (event) => {
     hour: JSON.stringify(new Date().getHours()).padStart(2, "0"),
     minute: JSON.stringify(new Date().getMinutes()).padStart(2, "0"),
   }; //set time
+
   messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
+  // todo: Later when app isnt back and white
+  // messageItem.style.color = userColor;
   messagesList.appendChild(messageItem);
   document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
 };
@@ -37,7 +52,7 @@ function sendMessage() {
 
 document.querySelector("textarea").addEventListener("keydown", (event) => {
   if (messageInput.value !== "") {
-    if (event.code === "Enter") {
+    if (event.code === "Enter" && !event.shiftKey) {
       const messagesList = document.getElementById("messages");
       const messageItem = document.createElement("li");
       messageItem.setAttribute("class", "sender");
