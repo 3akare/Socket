@@ -38,9 +38,7 @@ wss.on("connection", (ws) => {
   ws.on("message", (message) => {
     console.log("Received message from sender");
     const senderMessage = JSON.parse(message);
-    const sender = senderMessage.id;
 
-    console.log(senderMessage.id);
     // Broadcast the message to all connected clients (including the sender)
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN && client !== ws) {
