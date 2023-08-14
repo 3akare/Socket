@@ -1,4 +1,4 @@
-import { notification } from "./utils";
+import { notification, notifSound } from "./utils";
 
 const port = 3000;
 const socket = new WebSocket(
@@ -31,7 +31,8 @@ socket.onmessage = (event) => {
   // todo: Later when app isnt back and white
   // messageItem.style.color = userColor;
   messagesList.appendChild(messageItem);
-  notification();
+  // Handles in-message notification sound
+  notification(notifSound);
   document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
 };
 
@@ -86,7 +87,6 @@ document.querySelector("#buttonImage").addEventListener("click", () => {
     messageItem.setAttribute("class", "sender");
     messageItem.textContent = messageInput.value;
 
-    event.preventDefault();
     sendMessage();
 
     const time = {
