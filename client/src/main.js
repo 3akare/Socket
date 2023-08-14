@@ -1,3 +1,5 @@
+import { notification } from "./utils";
+
 const port = 3000;
 const socket = new WebSocket(
   `${
@@ -29,6 +31,7 @@ socket.onmessage = (event) => {
   // todo: Later when app isnt back and white
   // messageItem.style.color = userColor;
   messagesList.appendChild(messageItem);
+  notification();
   document.querySelector("#inScope").scrollIntoView({ behavior: "smooth" });
 };
 
