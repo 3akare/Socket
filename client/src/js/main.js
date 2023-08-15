@@ -21,7 +21,11 @@ socket.onmessage = (event) => {
   const messagesList = document.getElementById("messages");
   const messageItem = document.createElement("li");
   messageItem.setAttribute("class", "receiver");
-  messageItem.textContent = event.data;
+  messageItem.textContent = JSON.parse(event.data).content;
+  document.querySelector(".onlineNumber").innerHTML = JSON.parse(
+    event.data
+  ).size;
+
   const time = {
     hour: JSON.stringify(new Date().getHours()).padStart(2, "0"),
     minute: JSON.stringify(new Date().getMinutes()).padStart(2, "0"),

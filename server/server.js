@@ -39,10 +39,16 @@ wss.on("connection", (ws) => {
     console.log("Received message from sender");
     const senderMessage = JSON.parse(message);
 
-    // Broadcast the message to all connected clients (including the sender)
+    // Broadcast the message to all connected clients (except the sender)
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN && client !== ws) {
-        client.send(senderMessage.content);
+        console.log("There are:", wss.clients.size, "person(s) online");
+        client.send(
+          JSON.stringify({
+            content: senderMessage.content,
+            size: wss.clients.size,
+          })
+        );
       }
     });
   });
