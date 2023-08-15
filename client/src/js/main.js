@@ -94,8 +94,8 @@ document.querySelector("#buttonImage").addEventListener("click", () => {
     sendMessage();
 
     const time = {
-      hour: new Date().getHours(),
-      minute: new Date().getMinutes(),
+      hour: JSON.stringify(new Date().getHours()).padStart(2, "0"),
+      minute: JSON.stringify(new Date().getMinutes()).padStart(2, "0"),
     }; //set time
     messageItem.style.setProperty("--time", `"${time.hour}:${time.minute}"`);
     messagesList.appendChild(messageItem);
