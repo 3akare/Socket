@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/css/main.css" />
     <link rel="shortcut icon" href="./IcSharpInsights.svg" />
     <title>nobr: Anonymous</title>
@@ -17,7 +14,7 @@
         <a href="https://forms.gle/XJCrxfK5fLMZbrZN9" target="_blank">
           Feedback
         </a>
-        <p class="online">Online: <span class="onlineNumber">0<span></p>
+        <p class="online">Online: <span class="onlineNumber">0</span></p>
       </nav>
     </header>
     <main>
@@ -52,7 +49,7 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-C0CCM84XG9"
     ></script>
-    <script>
+    <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -60,6 +57,13 @@
       gtag("js", new Date());
 
       gtag("config", "G-C0CCM84XG9");
+    </script>
+    <script type="module">
+      import { partytownSnippet } from "@builder.io/partytown/integration";
+      const snippetText = partytownSnippet();
+      const el = document.createElement("script");
+      el.innerText = snippetText;
+      document.body.appendChild(el);
     </script>
   </body>
 </html>
